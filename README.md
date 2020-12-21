@@ -1,2 +1,2 @@
-# FirstBranch
-Created for Practise
+# JavaWork
+Java related projects and documents
