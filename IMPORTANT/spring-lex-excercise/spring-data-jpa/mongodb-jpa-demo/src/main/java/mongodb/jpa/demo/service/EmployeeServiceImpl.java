@@ -3,6 +3,9 @@ package mongodb.jpa.demo.service;
 import mongodb.jpa.demo.model.Employee;
 import mongodb.jpa.demo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +24,16 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public List<Employee> findAll() {
         return employeeRepository.findAll();
+    }
+
+    @Override
+    public Page<Employee> findAll(Pageable page) {
+        return employeeRepository.findAll(page);
+    }
+
+    @Override
+    public List<Employee> findAll(Sort sort) {
+        return employeeRepository.findAll(sort);
     }
 
     @Override

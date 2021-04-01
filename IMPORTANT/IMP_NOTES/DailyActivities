@@ -3,3 +3,9 @@
 
 Angular Tutorial
 https://www.youtube.com/watch?v=2Kl9jGjIItw&ab_channel=DigitalOcean
+
+
+		<artifactId>spring-data-jpa</artifactId>
+		<groupId>spring-data-jpa.example</groupId>
+
+    https://mkyong.com/mongodb/spring-data-mongodb-hello-world-example/
