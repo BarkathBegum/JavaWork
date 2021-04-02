@@ -1,11 +1,24 @@
 package mongodb.jpa.demo.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 //import statements
 @Document(collection = "employee")
 public class Employee {
+
+    @Field(name = "_id")
+    private ObjectId Id;
+
+    public ObjectId getId() {
+        return Id;
+    }
+
+    public void setId(ObjectId id) {
+        Id = id;
+    }
 
     private String empId;
     private String empName;
@@ -53,6 +66,49 @@ public class Employee {
     private String department;
     private String baseLocation;
     private Address address;
+    private double employeeSalary;
+    private String employeeBandLevel;
+    private String employeeContactNumber;
+
+    public Employee() {
+    }
+
+    public Employee(String empName, String department, String baseLocation, Address address, double employeeSalary, String employeeBandLevel, String employeeContactNumber) {
+        empIdCounter = empIdCounter+1;
+        this.empId = String.valueOf(empIdCounter);
+        this.empName = empName;
+        this.department = department;
+        this.baseLocation = baseLocation;
+        this.address = address;
+        this.employeeSalary = employeeSalary;
+        this.employeeBandLevel = employeeBandLevel;
+        this.employeeContactNumber = employeeContactNumber;
+    }
+
+    public double getEmployeeSalary() {
+        return employeeSalary;
+    }
+
+    public void setEmployeeSalary(double employeeSalary) {
+        this.employeeSalary = employeeSalary;
+    }
+
+    public String getEmployeeBandLevel() {
+        return employeeBandLevel;
+    }
+
+    public void setEmployeeBandLevel(String employeeBandLevel) {
+        this.employeeBandLevel = employeeBandLevel;
+    }
+
+    public String getEmployeeContactNumber() {
+        return employeeContactNumber;
+    }
+
+    public void setEmployeeContactNumber(String employeeContactNumber) {
+        this.employeeContactNumber = employeeContactNumber;
+    }
+
     private static int empIdCounter = 1000;
 
     public Employee(String empName, String department, String baseLocation, Address address) {
@@ -67,11 +123,15 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "empId=" + empId +
+                "Id='" + Id + '\'' +
+                ", empId='" + empId + '\'' +
                 ", empName='" + empName + '\'' +
                 ", department='" + department + '\'' +
                 ", baseLocation='" + baseLocation + '\'' +
                 ", address=" + address +
+                ", employeeSalary=" + employeeSalary +
+                ", employeeBandLevel='" + employeeBandLevel + '\'' +
+                ", employeeContactNumber='" + employeeContactNumber + '\'' +
                 '}';
     }
 }

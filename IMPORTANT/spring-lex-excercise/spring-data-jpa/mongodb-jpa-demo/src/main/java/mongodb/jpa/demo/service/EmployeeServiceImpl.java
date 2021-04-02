@@ -1,5 +1,6 @@
 package mongodb.jpa.demo.service;
 
+import mongodb.jpa.demo.model.Address;
 import mongodb.jpa.demo.model.Employee;
 import mongodb.jpa.demo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +41,34 @@ public class EmployeeServiceImpl implements EmployeeService{
     public List<Employee> findByEmpId(String empId) {
         return employeeRepository.findByEmpId(empId);
     }
+    public List<Employee> findByAddress(Address address) {
+        return employeeRepository.findByAddress(address);
+    }
 
     @Override
     public void save(Employee employee) {
     employeeRepository.save(employee);
+    }
+
+    public String updateByEmployeeBandLevel(String employeeBandLevel) {
+        List<Employee> employeesList = employeeRepository.findByEmployeeBandLevel(employeeBandLevel);
+        double updatedSalary = 0.0;
+        for(Employee employee : employeesList) {
+            if(employeeBandLevel=="A")
+            {
+                updatedSalary=employee.getEmployeeSalary()+(employee.getEmployeeSalary()*15/100);
+            }
+            else if(employeeBandLevel=="B")
+            {
+                updatedSalary=employee.getEmployeeSalary()+(employee.getEmployeeSalary()*10/100);
+            }
+            else if(employeeBandLevel=="C")
+            {
+                updatedSalary=employee.getEmployeeSalary()+(employee.getEmployeeSalary()*5/100);
+            }
+            employeeRepository.updateEmployeeSalary(employeeBandLevel,updatedSalary);
+        }
+        return "Success";
     }
 
     @Override
