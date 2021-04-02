@@ -12,6 +12,15 @@ public interface EmployeeRepository extends MongoRepository<Employee, String>, C
 
     List<Employee> findByEmpId(String empId);
     List<Employee> findByEmployeeBandLevel(String employeeBandLevel);
+    List<Employee> findByEmailAddress(String emailAddress);
+    List<Employee> findByEmailAddressAndEmployeeSalaryGreaterThan(String emailAddress, double employeeSalary);
+
+    @Query("{'empName' : :#{#empName}, 'emailAddress' : :#{#emailAddress} }")
+    List<Employee> findByEmpNameAndEmailAddress(String empName, String emailAddress);
+    @Query("{'employeeBandLevel' : :#{#employeeBandLevel}, 'employeeSalary' : :#{#employeeSalary} }")
+    List<Employee> findByEmployeeBandLevelAndEmployeeSalary(String employeeBandLevel, double employeeSalary);
+    @Query("{'employeeContactNumber' : :#{#employeeContactNumber}, 'emailAddress' : :#{#emailAddress} }")
+    List<Employee> findByEmployeeContactNumberAndEmailAddress(String employeeContactNumber, String emailAddress);
 
     List<Employee> findByAddress(Address address);
 

@@ -44,6 +44,21 @@ public class EmployeeServiceImpl implements EmployeeService{
     public List<Employee> findByAddress(Address address) {
         return employeeRepository.findByAddress(address);
     }
+    public List<Employee> findByEmailAddress(String emailAddress) {
+        return employeeRepository.findByEmailAddress(emailAddress);
+    }
+    public List<Employee> findByEmpNameAndEmailAddress(String empName, String emailAddress) {
+        return employeeRepository.findByEmpNameAndEmailAddress(empName, emailAddress);
+    }
+    public List<Employee> findByEmailAddressAndEmployeeSalaryGreaterThan(String emailAddress, double employeeSalary) {
+        return employeeRepository.findByEmailAddressAndEmployeeSalaryGreaterThan(emailAddress, employeeSalary);
+    }
+    public List<Employee> findByEmployeeBandLevelAndEmployeeSalary(String employeeBandLevel, double employeeSalary) {
+        return employeeRepository.findByEmployeeBandLevelAndEmployeeSalary(employeeBandLevel, employeeSalary);
+    }
+    public List<Employee> findByEmployeeContactNumberAndEmailAddress(String employeeContactNumber, String emailAddress) {
+        return employeeRepository.findByEmployeeContactNumberAndEmailAddress(employeeContactNumber, emailAddress);
+    }
 
     @Override
     public void save(Employee employee) {

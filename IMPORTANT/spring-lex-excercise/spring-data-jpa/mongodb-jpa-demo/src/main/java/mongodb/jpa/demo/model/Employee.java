@@ -68,12 +68,22 @@ public class Employee {
     private Address address;
     private double employeeSalary;
     private String employeeBandLevel;
+    private String emailAddress;
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
     private String employeeContactNumber;
 
     public Employee() {
     }
 
-    public Employee(String empName, String department, String baseLocation, Address address, double employeeSalary, String employeeBandLevel, String employeeContactNumber) {
+    public Employee(String empName, String department, String baseLocation, Address address, double employeeSalary, String employeeBandLevel, String employeeContactNumber, String emailAddress) {
         empIdCounter = empIdCounter+1;
         this.empId = String.valueOf(empIdCounter);
         this.empName = empName;
@@ -83,6 +93,7 @@ public class Employee {
         this.employeeSalary = employeeSalary;
         this.employeeBandLevel = employeeBandLevel;
         this.employeeContactNumber = employeeContactNumber;
+        this.emailAddress = emailAddress;
     }
 
     public double getEmployeeSalary() {
@@ -132,6 +143,7 @@ public class Employee {
                 ", employeeSalary=" + employeeSalary +
                 ", employeeBandLevel='" + employeeBandLevel + '\'' +
                 ", employeeContactNumber='" + employeeContactNumber + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
                 '}';
     }
 }
