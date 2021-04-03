@@ -2,6 +2,7 @@ package mongodb.jpa.demo.repository;
 
 import mongodb.jpa.demo.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -24,4 +25,12 @@ public class CustomRepositoryImpl implements CustomRepository {
         mongoTemplate.update(Employee.class).matching(query).apply(update).first();
     }
 
+    @Override
+    public Employee maxSalary() {
+        final Query query = new Query()
+                .limit(1)
+                .with(Sort.by(Sort.Direction.DESC, "employeeSalary"));
+
+        return mongoTemplate.findOne(query, Employee.class);
+    }
 }

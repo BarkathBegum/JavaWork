@@ -26,7 +26,8 @@ public class JpaMongoTemplate {
     }
     private MongoOperations getMongoOps()
     {
-        MongoOperations mongoOps = new MongoTemplate(new SimpleMongoClientDatabaseFactory(MongoClients.create(), "mongo-practice"));
+        SimpleMongoClientDatabaseFactory databaseFactory = new SimpleMongoClientDatabaseFactory(MongoClients.create(), "mongo-practice");
+        MongoOperations mongoOps = new MongoTemplate(databaseFactory);
         return mongoOps;
     }
     private CollectionOptions getSchemaOption(Class collectionName) {

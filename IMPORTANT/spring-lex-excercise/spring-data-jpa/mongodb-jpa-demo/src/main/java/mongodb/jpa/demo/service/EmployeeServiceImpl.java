@@ -41,6 +41,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     public List<Employee> findByEmpId(String empId) {
         return employeeRepository.findByEmpId(empId);
     }
+    public Employee findByMaxSalary() {
+        return employeeRepository.maxSalary();
+    }
     public List<Employee> findByAddress(Address address) {
         return employeeRepository.findByAddress(address);
     }
