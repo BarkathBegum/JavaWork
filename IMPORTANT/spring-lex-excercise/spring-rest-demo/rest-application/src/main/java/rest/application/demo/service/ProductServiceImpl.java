@@ -28,4 +28,12 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductDTO> getAllProducts() {
         return productMapper.getAllProducts();
     }
+
+    public List<ProductDTO> getProductsByNameAndVendor(String productName, String productVendor) {
+        return productMapper.getProductsByNameAndVendor(productName, productVendor);
+    }
+
+    public List<ProductDTO> getProductsByVendor(List<String> productVendors) {
+        return productMapper.getByVendors(productVendors);
+    }
 }

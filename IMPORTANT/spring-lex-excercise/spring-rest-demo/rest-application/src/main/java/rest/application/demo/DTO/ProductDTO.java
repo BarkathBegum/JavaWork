@@ -1,5 +1,9 @@
 package rest.application.demo.DTO;
 
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class ProductDTO {
     private long productCode;
 

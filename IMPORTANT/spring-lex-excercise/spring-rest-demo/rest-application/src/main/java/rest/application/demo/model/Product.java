@@ -3,6 +3,8 @@ package rest.application.demo.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 @Document(collection = "product")
 public class Product {
         private long productCode;
